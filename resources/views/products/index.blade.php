@@ -10,7 +10,7 @@
         <h4 class="page-title">Products</h4>
       </div>
       <div class="col-sm-8 col-9 text-right m-b-20">
-        <a href="#" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Product</a>
+        <a href="{{route('products.create')}}" class="btn btn-primary btn-rounded float-right"><i class="fa fa-plus"></i> Add Product</a>
       </div>
     </div>
     <div class="row" style="margin-top: 27px;">
@@ -31,15 +31,20 @@
                     </tr>
                   </thead>
                   <tbody>
+                    @foreach ($products as $product)
                     <!-- Start Product Item -->
                     <tr>
                       <td class="product-img" scope="row">
-                        <img src="{{asset('assets/images/default_img.png')}}" alt="product-img" />
+                        @if ($product->product_image)
+                          <img class="img-thumbnail" src="{{asset('images/'.$product->product_image)}}" alt="product-img">
+                        @else
+                          <img src="{{asset('assets/images/default_img.png')}}" alt="product-img" />
+                        @endif
                       </td>
-                      <td class="td-item">Dell G15 5510</td>
-                      <td class="td-item">description description description</td>
-                      <td class="td-item">Laptop</td>
-                      <td class="td-item">$650</td>
+                      <td class="td-item">{{$product->product_name}}</td>
+                      <td class="td-item">{{$product->product_description}}</td>
+                      <td class="td-item">{{$product->product_category}}</td>
+                      <td class="td-item">${{$product->product_price}}</td>
                       <td class="text-right">
                         <div class="dropdown dropdown-action patient-action">
                           <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
@@ -51,6 +56,7 @@
                       </td>
                     </tr>
                     <!-- End Product Item -->
+                    @endforeach
                   </tbody>
                 </table>
               </div>

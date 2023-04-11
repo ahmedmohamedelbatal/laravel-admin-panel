@@ -12,7 +12,8 @@
     </div>
     <div class="row">
       <div class="col-md-8 offset-md-2">
-          <form method="" action="">
+          <form method="post" action="{{route('products.store')}}" enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
               <label>Product Name</label>
               <input type="text" class="form-control" name="product_name" required>
@@ -26,13 +27,8 @@
               <input type="text" class="form-control" name="product_category" required>
             </div>
             <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Upload</span>
-              </div>
-              <div class="custom-file">
-                <input type="file" class="custom-file-input" required>
-                <label class="custom-file-label">Choose file</label>
-              </div>
+              <label class="input-group-text">Product Image</label>
+              <input type="file" name="product_image" class="form-control" required>
             </div>
             <div class="form-group">
               <label>Product Description</label>
