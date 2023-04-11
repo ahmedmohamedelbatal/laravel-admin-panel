@@ -20,6 +20,14 @@ class ProductController extends Controller
         return view('products.create');
     }
     public function store(Request $request) {
+        $request->validate([
+            'product_name' => 'required',
+            'product_price' => 'required|numeric',
+            'product_category' => 'required',
+            'product_description' => 'required',
+            'product_image' => 'required|image',
+        ]);
+
         $image = $request->file('product_image')->getClientOriginalName();
         $path = $request->file('product_image')->storeAs('products', $image, 'public_path');
         Product::create([
@@ -38,6 +46,15 @@ class ProductController extends Controller
     }
     public function update(Request $request, int $id) {
         $product = Product::findorFail($id);
+        
+        $request->validate([
+            'product_name' => 'required',
+            'product_price' => 'required|numeric',
+            'product_category' => 'required',
+            'product_description' => 'required',
+            'product_image' => 'required|image',
+        ]);
+        
         $image = $request->file('product_image')->getClientOriginalName();
         $path = $request->file('product_image')->storeAs('products', $image, 'public_path');
         $product->update([

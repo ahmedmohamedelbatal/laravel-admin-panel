@@ -18,7 +18,7 @@
     <header class="wrapper__header">
       <!-- start logo -->
       <div class="logo">
-        <a href="#" class="logo__img">
+        <a href="{{route('home')}}" class="logo__img">
           <img src="{{asset('assets/images/admin-logo.png')}}" alt="logo-img" />
         </a>
       </div>
@@ -67,10 +67,10 @@
         <ul>
           <li class="menu-title"></li>
           <li>
-            <a href="#"><i class="fa fa-dashboard"></i> Dashboard</a>
+            <a href="{{route('home')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-shopping-cart"></i> Products</a>
+            <a href="{{route('products.index')}}"><i class="fa fa-shopping-cart"></i> Products</a>
           </li>
           <li>
             <a href="#"><i class="fa fa-list-alt"></i> Categories</a>
