@@ -33,14 +33,25 @@ class ProductController extends Controller
     }
 
     public function edit(int $id) {
-        return view('products.edit');
+        $product = Product::findorFail($id);
+        return view('products.edit', compact('product'));
     }
-
     public function update(Request $request, int $id) {
-        //
+        $product = Product::findorFail($id);
+        $image = $request->file('product_image')->getClientOriginalName();
+        $path = $request->file('product_image')->storeAs('products', $image, 'public_path');
+        $product->update([
+            'product_name' => $request->product_name,
+            'product_price' => $request->product_price,
+            'product_category' => $request->product_category,
+            'product_description' => $request->product_description,
+            'product_image' => $path,
+        ]);
+        return redirect()->route('products.index');
     }
 
     public function destroy(int $id) {
-        //
+        Product::findorFail($id)->delete();
+        return redirect()->route('products.index');
     }
 }
