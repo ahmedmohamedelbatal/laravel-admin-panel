@@ -22,7 +22,18 @@ class ProfileController extends Controller
     }
     public function update(Request $request) {
         $user = User::findorFail(Auth::user()->id);
-        
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|string|email|max:255|unique:users',
+            'address' => 'required',
+            'phone_number' => 'required|numeric',
+            'job' => 'required',
+            'gender' => 'required',
+            'image' => 'required|image',
+            'biography' => 'required',
+        ]);
+
         $image = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('profiles', $image, 'public_path');
         $user->update([
