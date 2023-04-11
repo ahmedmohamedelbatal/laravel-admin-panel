@@ -10,7 +10,7 @@
         <h4 class="page-title">My Profile</h4>
       </div>
       <div class="col-sm-5 col-8 text-right m-b-30">
-        <a href="#" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
+        <a href="{{route('profile.edit')}}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Edit Profile</a>
       </div>
     </div>
     <div class="card-box profile-header">

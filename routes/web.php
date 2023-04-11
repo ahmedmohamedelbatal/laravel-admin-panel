@@ -23,4 +23,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('profile',[ProfileController::class,'index'])->name('profile');
 
+Route::get('profile/edit',[ProfileController::class,'edit'])->name('profile.edit');
+Route::put('profile/edit',[ProfileController::class,'update'])->name('profile.update');
+
 Route::resource('products', ProductController::class)->except('show');
