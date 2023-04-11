@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
     <!-- Bootstrap CSS File -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" />
     <!-- Custom Css Include-->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
@@ -35,14 +34,13 @@
         <!-- start user item -->
         <li class="nav-item dropdown has-arrow">
           <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown" aria-expanded="false">
-            <span class="user-img">
-              <img class="rounded-circle" src="{{asset('assets/images/default_img.png')}}" alt="user-img" width="24" />
-            </span>
+            <span> {{ Auth::user()->name }} </span>
           </a>
           <div class="dropdown-menu" x-placement="bottom-start">
             <a href="#" class="dropdown-item">My Profile</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item btn" href="#">Logout</a>
+            <a class="dropdown-item btn" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
           </div>
         </li>
         <!-- end user item -->
@@ -55,7 +53,8 @@
         <div class="dropdown-menu dropdown-menu-right">
           <a href="#" class="dropdown-item">My Profile</a>
           <div class="dropdown-divider"></div>
-          <span class="dropdown-item btn"><a href="#">Logout</a></span>
+          <a class="dropdown-item btn" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout </a>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
         </div>
       </div>
       <!-- End mobile user item -->
