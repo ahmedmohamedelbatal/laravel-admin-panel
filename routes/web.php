@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::get('profile/edit',[ProfileController::class,'edit'])->name('profile.edit
 Route::put('profile/edit',[ProfileController::class,'update'])->name('profile.update');
 
 Route::resource('products', ProductController::class)->except('show');
+
+Route::resource('categories', CategoryController::class)->except('show');

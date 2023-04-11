@@ -34,8 +34,16 @@
         <!-- start user item -->
         <li class="nav-item dropdown has-arrow">
           <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown" aria-expanded="false">
+            <span class="user-img">
+              @if (Auth::user()->image)
+                <img class="rounded-circle" src="{{asset('images/'.Auth::user()->image)}}" alt="Admin" width="24">
+              @else
+                <img class="rounded-circle" src="{{asset('assets/images/default_img.png')}}" alt="Admin" />
+              @endif
+            </span>
             <span> {{ Auth::user()->name }} </span>
           </a>
+
           <div class="dropdown-menu" x-placement="bottom-start">
             <a href="{{route('profile')}}" class="dropdown-item">My Profile</a>
             <div class="dropdown-divider"></div>
@@ -73,7 +81,7 @@
             <a href="{{route('products.index')}}"><i class="fa fa-shopping-cart"></i> Products</a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-list-alt"></i> Categories</a>
+            <a href="{{route('categories.index')}}"><i class="fa fa-list-alt"></i> Categories</a>
           </li>
         </ul>
       </div>

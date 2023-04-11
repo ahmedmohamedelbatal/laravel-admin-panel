@@ -26,9 +26,13 @@
             @error('product_price') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
-            <label>Product Category</label>
-            <input type="text" class="form-control @error('product_category') is-invalid @enderror" name="product_category" value="{{$product->product_category}}" required>
-            @error('product_category') <p>{{ $message }}</p> @enderror
+            <label for="category_id">Product Category:</label>
+            <select class="form-control" name="category_id" id="category_id" required>
+                @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ $product->category_id == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
+                @endforeach
+            </select>
+            @error('category_id') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <div class="input-group">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -17,13 +18,14 @@ class ProductController extends Controller
     }
 
     public function create() {
-        return view('products.create');
+        $categories = Category::all();
+        return view('products.create', compact('categories'));
     }
     public function store(Request $request) {
         $request->validate([
             'product_name' => 'required',
             'product_price' => 'required|numeric',
-            'product_category' => 'required',
+            'category_id' => 'required',
             'product_description' => 'required',
             'product_image' => 'required|image',
         ]);
@@ -33,7 +35,7 @@ class ProductController extends Controller
         Product::create([
             'product_name' => $request->product_name,
             'product_price' => $request->product_price,
-            'product_category' => $request->product_category,
+            'category_id' => $request->category_id,
             'product_description' => $request->product_description,
             'product_image' => $path,
         ]);
@@ -42,7 +44,8 @@ class ProductController extends Controller
 
     public function edit(int $id) {
         $product = Product::findorFail($id);
-        return view('products.edit', compact('product'));
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
     public function update(Request $request, int $id) {
         $product = Product::findorFail($id);
@@ -50,7 +53,7 @@ class ProductController extends Controller
         $request->validate([
             'product_name' => 'required',
             'product_price' => 'required|numeric',
-            'product_category' => 'required',
+            'category_id' => 'required',
             'product_description' => 'required',
             'product_image' => 'required|image',
         ]);
@@ -60,7 +63,7 @@ class ProductController extends Controller
         $product->update([
             'product_name' => $request->product_name,
             'product_price' => $request->product_price,
-            'product_category' => $request->product_category,
+            'category_id' => $request->category_id,
             'product_description' => $request->product_description,
             'product_image' => $path,
         ]);
