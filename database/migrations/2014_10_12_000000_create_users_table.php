@@ -17,6 +17,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->enum('gender', ['male', 'female']);
+            $table->string('job')->default('not found');
+            $table->string('phone_number', 12)->default('not found');
+            $table->string('address')->default('not found');
+            $table->longText('biography')->default('not found');
+            $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

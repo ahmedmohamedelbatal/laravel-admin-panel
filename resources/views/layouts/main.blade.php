@@ -37,7 +37,7 @@
             <span> {{ Auth::user()->name }} </span>
           </a>
           <div class="dropdown-menu" x-placement="bottom-start">
-            <a href="#" class="dropdown-item">My Profile</a>
+            <a href="{{route('profile')}}" class="dropdown-item">My Profile</a>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item btn" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
@@ -51,7 +51,7 @@
       <div class="dropdown mobile-user-menu float-right">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
         <div class="dropdown-menu dropdown-menu-right">
-          <a href="#" class="dropdown-item">My Profile</a>
+          <a href="{{route('profile')}}" class="dropdown-item">My Profile</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item btn" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout </a>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>

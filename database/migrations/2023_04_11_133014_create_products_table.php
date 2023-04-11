@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->decimal('product_price', 8, 2);
             $table->string('product_category');
-            $table->string('product_image');
+            $table->string('product_image')->nullable();
             $table->longText('product_description');
             $table->timestamps();
         });
