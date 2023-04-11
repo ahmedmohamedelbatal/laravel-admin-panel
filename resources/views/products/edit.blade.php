@@ -17,29 +17,29 @@
           @method('PUT')
           <div class="form-group">
             <label>Product Name</label>
-            <input type="text" class="form-control @error('product_name') is-invalid @enderror" name="product_name" value="{{$product->product_name}}">
+            <input type="text" class="form-control @error('product_name') is-invalid @enderror" name="product_name" value="{{$product->product_name}}" required>
             @error('product_name') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Product Price</label>
-            <input type="number" class="form-control @error('product_price') is-invalid @enderror" name="product_price" value="{{$product->product_price}}">
+            <input type="number" class="form-control @error('product_price') is-invalid @enderror" name="product_price" value="{{$product->product_price}}" required>
             @error('product_price') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Product Category</label>
-            <input type="text" class="form-control @error('product_category') is-invalid @enderror" name="product_category" value="{{$product->product_category}}">
+            <input type="text" class="form-control @error('product_category') is-invalid @enderror" name="product_category" value="{{$product->product_category}}" required>
             @error('product_category') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <div class="input-group">
               <label class="input-group-text">Product Image</label>
-              <input type="file" name="product_image" class="form-control @error('product_image') is-invalid @enderror">
+              <input type="file" name="product_image" class="form-control @error('product_image') is-invalid @enderror" required>
             </div>
             @error('product_image') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Product Description</label>
-            <textarea class="form-control @error('product_description') is-invalid @enderror" name="product_description" rows="5">{{$product->product_description}}</textarea>
+            <textarea class="form-control @error('product_description') is-invalid @enderror" name="product_description" rows="5" required>{{$product->product_description}}</textarea>
             @error('product_description') <p>{{ $message }}</p> @enderror
           </div>
           <div class="col-12">

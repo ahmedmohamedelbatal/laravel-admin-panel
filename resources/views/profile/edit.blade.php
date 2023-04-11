@@ -17,32 +17,32 @@
           @method('PUT')
           <div class="form-group">
             <label>Name</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" required>
             @error('name') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Email Address</label>
-            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}">
+            <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}" required>
             @error('email') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Job</label>
-            <input type="text" class="form-control @error('job') is-invalid @enderror" name="job" value="{{$user->job}}">
+            <input type="text" class="form-control @error('job') is-invalid @enderror" name="job" value="{{$user->job}}" required>
             @error('job') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Phone Number</label>
-            <input type="text" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{$user->phone_number}}">
+            <input type="number" class="form-control @error('phone_number') is-invalid @enderror" name="phone_number" value="{{$user->phone_number}}" required>
             @error('phone_number') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Address</label>
-            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{$user->address}}">
+            <input type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{$user->address}}" required>
             @error('address') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Gender</label>
-            <select class="form-control @error('gender') is-invalid @enderror" name="gender">
+            <select class="form-control @error('gender') is-invalid @enderror" name="gender" required>
               <option>male</option>
               <option>female</option>
             </select>
@@ -51,13 +51,13 @@
           <div class="form-group">
             <div class="input-group">
               <label class="input-group-text">Image</label>
-              <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+              <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" required>
             </div>
             @error('image') <p>{{ $message }}</p> @enderror
           </div>
           <div class="form-group">
             <label>Biography</label>
-            <textarea class="form-control @error('biography') is-invalid @enderror" name="biography" rows="5">{{$user->biography}}</textarea>
+            <textarea class="form-control @error('biography') is-invalid @enderror" name="biography" rows="5" required>{{$user->biography}}</textarea>
             @error('biography') <p>{{ $message }}</p> @enderror
           </div>
           <div class="col-12">
