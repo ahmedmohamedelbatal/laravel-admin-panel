@@ -50,7 +50,7 @@
                           <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a href="{{route('products.edit', $product->id)}}" class="dropdown-item"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                            <form action="{{ url('products', $product->id ) }}" method="post">
+                            <form action="{{ route('products.destroy', $product->id) }}" method="post">
                               {{ csrf_field() }}
                               {{ method_field('DELETE') }}
                               <button class="dropdown-item"><i class="fa fa-trash-o m-r-5"></i> Delete</button>

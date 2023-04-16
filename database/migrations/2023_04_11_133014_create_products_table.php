@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('product_name');
             $table->decimal('product_price', 8, 2);
             $table->foreignId('category_id')->constrained('categories')->cascadeOnDelete();
-            $table->string('product_image')->nullable();
+            $table->string('product_image');
             $table->longText('product_description');
             $table->timestamps();
         });

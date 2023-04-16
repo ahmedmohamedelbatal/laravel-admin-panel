@@ -20,13 +20,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
 
-Route::get('profile',[ProfileController::class,'index'])->name('profile');
+Route::prefix('profile')->group(function () {
+  Route::get('/',[ProfileController::class,'index'])->name('profile');
+  Route::get('/edit',[ProfileController::class,'edit'])->name('profile.edit');
+  Route::put('/update',[ProfileController::class,'update'])->name('profile.update');
+})->middleware('auth');
 
-Route::get('profile/edit',[ProfileController::class,'edit'])->name('profile.edit');
-Route::put('profile/edit',[ProfileController::class,'update'])->name('profile.update');
+Route::resource('/products', ProductController::class)->except('show')->middleware('auth');
 
-Route::resource('products', ProductController::class)->except('show');
-
-Route::resource('categories', CategoryController::class)->except('show');
+Route::resource('/categories', CategoryController::class)->except('show')->middleware('auth');

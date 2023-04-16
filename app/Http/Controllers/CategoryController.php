@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-
     public function index() {
         $categories = Category::all();
         return view('categories.index', compact('categories'));
@@ -44,7 +40,7 @@ class CategoryController extends Controller
         $category = Category::findorFail($id);
         
         $request->validate([
-            'category_name' => 'required|unique:categories',
+            'category_name' => 'required|unique:categories,category_name,'.$category->id,
             'category_description' => 'required',
             'category_image' => 'required|image',
         ]);

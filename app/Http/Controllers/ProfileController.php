@@ -7,25 +7,22 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-
     public function index() {
-        $user = User::findorFail(Auth::user()->id);
+        $user = Auth::user();
         return view('profile.index', compact('user'));
     }
 
     public function edit() {
-        $user = User::findorFail(Auth::user()->id);
+        $user = Auth::user();
         return view('profile.edit', compact('user'));
     }
+    
     public function update(Request $request) {
         $user = User::findorFail(Auth::user()->id);
 
         $request->validate([
             'name' => 'required',
-            'email' => 'required|string|email|max:255',
+            'email' => 'required|string|unique:users,email,'.Auth::id(),
             'address' => 'required',
             'phone_number' => 'required|numeric',
             'job' => 'required',
@@ -36,6 +33,7 @@ class ProfileController extends Controller
 
         $image = $request->file('image')->getClientOriginalName();
         $path = $request->file('image')->storeAs('profiles', $image, 'public_path');
+
         $user->update([
             'name' => $request->name,
             'email' => $request->email,

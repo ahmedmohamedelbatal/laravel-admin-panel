@@ -8,10 +8,6 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function __construct() {
-        $this->middleware('auth');
-    }
-    
     public function index() {
         $products = Product::all();
         return view('products.index', compact('products'));
@@ -21,6 +17,7 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('products.create', compact('categories'));
     }
+
     public function store(Request $request) {
         $request->validate([
             'product_name' => 'required',
@@ -47,6 +44,7 @@ class ProductController extends Controller
         $categories = Category::all();
         return view('products.edit', compact('product', 'categories'));
     }
+    
     public function update(Request $request, int $id) {
         $product = Product::findorFail($id);
         
